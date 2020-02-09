@@ -1,1 +1,1 @@
-/surah-list/ http://staging.quran.com:3000/api/v3/chapters/:splat 200!
+/surah-list/* http://staging.quran.com:3000/api/v3/chapters/:splat 200!
