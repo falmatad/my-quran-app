@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import MenuList from "../src/Components/Menu/MenuList";
+import MenuList from "./Components/MenuList";
 import './App.css';
-import Home from "./Components/Home/Home";
+import Home from "./Components/Home";
+import DisplayAyat from './Components/DisplayAyat';
 import { Route } from "react-router-dom";
 import axios from "axios";
-import DisplayAyat from "./Components/DisplayAyat";
 
 const App = () => {
   const [surah, setSurah] = useState([]);
@@ -18,26 +18,21 @@ const App = () => {
 				console.log(error);
 			});
 
-    }, [surah]);
+    }, []);
   return (
     <div className="App">
       <Route exact path="/" component={Home} />
-      <Route
-        exact
-        path="/surah-list"
-        render={props => (
-          <MenuList
-            surah={surah}
-            {...props}
+      <Route exact path="/surah-list">
+            <MenuList 
+              surah={surah} 
+            />
+      </Route>
 
-          />
-        )}
-      />
-      <Route
-        exact
-        path="/display-ayat/:surahID"
-        render={props => <DisplayAyat surah={surah} {...props}/>}
-      />
+      <Route path="/surah-list/:surahID">
+              <DisplayAyat 
+                surah={surah}
+              />
+      </Route>
     </div>
   );
 }
