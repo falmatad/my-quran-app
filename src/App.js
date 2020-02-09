@@ -10,7 +10,7 @@ const App = () => {
   const [surah, setSurah] = useState([]);
 
 	useEffect(() => {
-		axios.get(`https://cors-escape.herokuapp.com/http://staging.quran.com:3000/api/v3/chapters`)
+		axios.get(`http://staging.quran.com:3000/api/v3/chapters`)
             .then(response => {
                 setSurah(response.data.chapters);
 			})
