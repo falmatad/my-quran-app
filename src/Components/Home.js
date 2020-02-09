@@ -1,20 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-function Home(props) {
-    const routeToShop =() => {
-      props.history.push("/surah-list")
-    }
-    const HomeImage = styled.img`
-        width: 100%;
-        min-width: 1032px;
-        max-height: 97vh;
-        object-fit: cover;
-    `;
     const HomeWrapper = styled.div`
         display: flex;
         flex-flow: column nowrap;
+        justify-content: center;
         align-items: center;
+        background-image: url("https://khazanahalquran.com/wp-content/uploads/2016/01/AlQuran-AlKarim-HD-Wallpaper31.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        // width: 100vw;
+        height: 100vh;
     `;
     const StartButton = styled.button`
         position: relative;
@@ -43,13 +39,19 @@ function Home(props) {
         outline: none;
         cursor: pointer;
         transition: box-shadow 0.2s;
+
+        &:hover {
+          transform: translateY(-5px) scale(1.05);
+        }
     `
+    
+function Home(props) {
+    const routeToShop =() => {
+      props.history.push("/surah-list")
+    }
+    
     return (
       <HomeWrapper>
-        <HomeImage
-          src="https://khazanahalquran.com/wp-content/uploads/2016/01/AlQuran-AlKarim-HD-Wallpaper31.jpg"
-          alt=""
-        />
         <StartButton onClick={routeToShop} className="md-button shop-button">Read the Noble Quran</StartButton>
       </HomeWrapper>
     );
