@@ -2,11 +2,17 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 import styled from "styled-components";
 import {useParams, NavLink} from "react-router-dom";
+import Ayat from "./Ayat";
+import { trackPromise } from 'react-promise-tracker';
 
+const AyatPage = styled.div`
+  transition: transform 0.2s ease-in;
+  background-color: #AFEEEE;
 
+`;
 const Pulse = styled.div`
   transition: transform 0.2s ease-in;
-  background-image: url("https://khazanahalquran.com/wp-content/uploads/2016/01/AlQuran-AlKarim-HD-Wallpaper31.jpg");
+  background-color: #AFEEEE;
   width: 100%;
   height: 200px;
   box-shadow: 0px 1px 6px -2px grey;
@@ -14,41 +20,22 @@ const Pulse = styled.div`
   margin-bottom: 5px;
 
 `;
-const AyatList = styled.div`
-  transition: transform 0.2s ease-in;
-  background: white;
-  height: 100%;
-  box-shadow: 0px 1px 6px -2px grey;
-  margin-top: 10px;
-  padding: 10px;
-  margin-right: 5px;
+const AyatContainer = styled.div`
+transition: transform 0.2s ease-in;
+background: white;
+height: 100%;
+box-shadow: 0px 1px 6px -2px grey;
+margin-top: 10px;
+padding: 10px;
+margin-right: 5px;
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+align-items: center;
 `;
 const Title = styled.h2`
   font-size: 35px;
   color: navy;
-`;
-const Ayat = styled.div`
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    p {
-        width: 100%;
-        text-align: end;
-        font-family: 'Scheherazade', serif;
-        font-size: 35px;
-        color: navy;
-        transition: transform 0.2s ease-in;
-        cursor: pointer;
-        box-shadow: 0px 1px 6px -2px grey;
-        margin-top: 10px;
-        padding: 10px
-        text-decoration: none;
-    }
-
-    div {
-        font-family: 'Scheherazade', serif;
-        font-size: 35px;
-    }
 `;
 
 const NextButton = styled.button`
@@ -108,7 +95,7 @@ const NextButton = styled.button`
 
     `;
 
-const DisplayAyat = props => {
+const AyatList = props => {
     const {surahID} = useParams();
     const currentSurah = props.surah.find(
         element => surahID === `${element.chapter_number}`
@@ -119,18 +106,18 @@ const DisplayAyat = props => {
 
 
     useEffect(() => {
+        trackPromise(
 		axios.get(`http://staging.quran.com:3000/api/v3/chapters/${surahID}/verses?page=${page}&translations=22`)
             .then(response => {
                 setAyats(response.data.verses);
 			})
 			.catch(error => {
 				console.log(error);
-			});
+			}));
     }, [surahID,page]);
     
-
     return (
-    <div>
+    <AyatPage>
         <Pulse className="card-wrapper">
             <Title>Welcome to Surah {currentSurah.name_arabic}</Title>
             <Title>{currentSurah.name_complex}</Title>
@@ -141,17 +128,15 @@ const DisplayAyat = props => {
             <NavLink to={`/surah-list`}><BackToMenu className="md-button shop-button">Back to Selection</BackToMenu></NavLink>
             <NextButton onClick={() => setPage(page + 1)}>Next Page</NextButton>
         </ButtonsNav>
-        <AyatList className="card-wrapper">
+        <AyatContainer className="card-wrapper">
             { ayats.map( ayat => (
-                <Ayat>
-                  
-                    <div>({ayat.verse_number})</div>
-                    <p>{ayat.translations[0].text}</p>
-                    <p key = {ayat.verse_number}> {ayat.text_madani}</p>
-                </Ayat>
+                <Ayat
+                    key={ayat.verse_number}
+                    ayat={ayat}
+                />
             ))}
-        </AyatList>
-    </div>
+        </AyatContainer>
+    </AyatPage>
     );
 }
-export default DisplayAyat;
+export default AyatList;

@@ -4,6 +4,8 @@ import styled from "styled-components";
 import {NavLink} from "react-router-dom";
 
 const Container = styled.div`
+background-color: #00CED1;
+// background-position: center;
 // background: white;
 width: 100%;
 height: 100%;
@@ -15,13 +17,12 @@ flex-wrap: wrap;
 align-items: space-evenly;
 padding: 10px;
 box-shadow: 0px 1px 6px -2px grey;
-border: 2px solid black;
 `;
 const MenuPage = styled.div`
+background-color: #AFEEEE;
+background-position: center;
 display:flex;
 flex-direction: column;
-background-image: url("https://khazanahalquran.com/wp-content/uploads/2016/01/AlQuran-AlKarim-HD-Wallpaper31.jpg");
-background-position: center;
 width: 100%;
 height: 100%;
 `;
