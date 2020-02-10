@@ -13,9 +13,7 @@ display: flex;
 flex-flow: column nowrap;
 justify-content: center;
 align-items: center;
-background-color: white;
-width: 100vw;
-height: 100vh;
+
 `;
  const LoadingIndicator = props => {
     const { promiseInProgress } = usePromiseTracker();

@@ -7,7 +7,7 @@ const ArabicText = styled.p`
     text-align: end;
     font-family: 'Scheherazade', serif;
     font-size: 40px;
-    color: navy;
+    color: white;
     transition: transform 0.2s ease-in;
     cursor: pointer;
     box-shadow: 0px 1px 6px -2px grey;
@@ -21,7 +21,7 @@ const EnglishText = styled.p`
     text-align: end;
     font-family: 'Scheherazade', serif;
     font-size: 25px;
-    color: navy;
+    color: #1c5d76;
     transition: transform 0.2s ease-in;
     cursor: pointer;
     box-shadow: 0px 1px 6px -2px grey;
@@ -34,6 +34,7 @@ const EnglishText = styled.p`
 const AyatNumber = styled.div`
     font-family: 'Scheherazade', serif;
     font-size: 35px;
+    color: white;
 `;
 
 const Ayat = (props) => {
