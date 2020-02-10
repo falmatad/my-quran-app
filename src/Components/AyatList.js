@@ -7,12 +7,12 @@ import { trackPromise } from 'react-promise-tracker';
 
 const AyatPage = styled.div`
   transition: transform 0.2s ease-in;
-  background-color: #AFEEEE;
+//   background-color: #AFEEEE;
 
 `;
 const Pulse = styled.div`
   transition: transform 0.2s ease-in;
-  background-color: #AFEEEE;
+  background-color: White;
   width: 100%;
   height: 200px;
   box-shadow: 0px 1px 6px -2px grey;
@@ -22,7 +22,7 @@ const Pulse = styled.div`
 `;
 const AyatContainer = styled.div`
 transition: transform 0.2s ease-in;
-background: white;
+background: #00CED1;
 height: 100%;
 box-shadow: 0px 1px 6px -2px grey;
 margin-top: 10px;
@@ -35,7 +35,7 @@ align-items: center;
 `;
 const Title = styled.h2`
   font-size: 35px;
-  color: navy;
+  color: #1c5d76;
 `;
 
 const NextButton = styled.button`
@@ -92,6 +92,7 @@ const NextButton = styled.button`
     const ButtonsNav = styled.div`
         display: flex;
         justify-content: center;
+        background-color: white;
 
     `;
 
