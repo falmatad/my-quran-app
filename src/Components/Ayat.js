@@ -1,13 +1,15 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 
-
+const AyatAndNumber = styled.div`
+    display: flex;
+`
 const ArabicText = styled.p`
     width: 100%;
     text-align: end;
     font-family: 'Scheherazade', serif;
     font-size: 40px;
-    color: white;
+    color: #00CED1;
     transition: transform 0.2s ease-in;
     cursor: pointer;
     box-shadow: 0px 1px 6px -2px grey;
@@ -34,16 +36,19 @@ const EnglishText = styled.p`
 const AyatNumber = styled.div`
     font-family: 'Scheherazade', serif;
     font-size: 35px;
-    color: white;
+    color: #00CED1;
 `;
 
 const Ayat = (props) => {
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
+
     return (
         <>
-            <AyatNumber>({props.ayat.verse_number})</AyatNumber>
-            <ArabicText> {props.ayat.text_madani}</ArabicText>
-            <EnglishText>{props.ayat.translations[0].text}</EnglishText>
+            <ArabicText> {`${props.ayat.text_madani} {${props.ayat.verse_number}}`}</ArabicText>
+            <EnglishText>{`${props.ayat.translations[0].text} {${props.ayat.verse_number}}`}</EnglishText>
         </>
     )
 }

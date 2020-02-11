@@ -6,28 +6,33 @@ import Ayat from "./Ayat";
 import { trackPromise } from 'react-promise-tracker';
 
 const AyatPage = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
   transition: transform 0.2s ease-in;
-//   background-color: #AFEEEE;
+background-color: #00CED1;
 
 `;
 const Pulse = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
   transition: transform 0.2s ease-in;
-  background-color: White;
+  background-color: #00CED1;
   width: 100%;
   height: 200px;
   box-shadow: 0px 1px 6px -2px grey;
-  margin-top: 5px;
-  margin-bottom: 5px;
 
 `;
 const AyatContainer = styled.div`
 transition: transform 0.2s ease-in;
-background: #00CED1;
-height: 100%;
+background: white;
+width: 70vw;
 box-shadow: 0px 1px 6px -2px grey;
-margin-top: 10px;
-padding: 10px;
-margin-right: 5px;
+margin-top: 5px;
+padding: 20px;
+margin: 10px;
 display: flex;
 flex-direction: column;
 justify-content: flex-end;
@@ -91,8 +96,11 @@ const NextButton = styled.button`
 
     const ButtonsNav = styled.div`
         display: flex;
-        justify-content: center;
-        background-color: white;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: #00CED1;
+        // height: 100px;
+        width: 100vw;
 
     `;
 
@@ -114,13 +122,14 @@ const AyatList = props => {
 			})
 			.catch(error => {
 				console.log(error);
-			}));
+            }));
+        
     }, [surahID,page]);
-    
+
     return (
     <AyatPage>
         <Pulse className="card-wrapper">
-            <Title>Welcome to Surah {currentSurah.name_arabic}</Title>
+            <Title>{currentSurah.name_arabic}</Title>
             <Title>{currentSurah.name_complex}</Title>
             <Title>{currentSurah.translated_name.name}</Title>
 		</Pulse >
@@ -137,6 +146,11 @@ const AyatList = props => {
                 />
             ))}
         </AyatContainer>
+        <ButtonsNav>
+            <NextButton onClick={() => setPage(page - 1)}>Previos Page</NextButton>
+            <NavLink to={`/surah-list`}><BackToMenu className="md-button shop-button">Back to Selection</BackToMenu></NavLink>
+            <NextButton onClick={() =>   setPage(page + 1)}>Next Page</NextButton>
+        </ButtonsNav>
     </AyatPage>
     );
 }

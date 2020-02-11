@@ -4,7 +4,7 @@ import styled from "styled-components";
 import {NavLink} from "react-router-dom";
 
 const Container = styled.div`
-background-color: #00CED1;
+background-color: white;
 // background-position: center;
 // background: white;
 width: 100%;
@@ -15,16 +15,14 @@ display: flex;
 justify-content: space-evenly;
 flex-wrap: wrap;
 align-items: space-evenly;
-padding: 10px;
 box-shadow: 0px 1px 6px -2px grey;
 `;
 const MenuPage = styled.div`
-background-color: #AFEEEE;
+background-color: #00CED1;
 background-position: center;
 display:flex;
 flex-direction: column;
-width: 100%;
-height: 100%;
+padding: 10px;
 `;
 
 const BackToHome = styled.div`
