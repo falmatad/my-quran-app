@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: #025A34;
+  background-color: #025A34; 
   
 }
 
@@ -21,4 +21,8 @@
 
 .App-link {
   color: #09d3ac;
+}
+
+*:focus {
+  outline: 0;
 }

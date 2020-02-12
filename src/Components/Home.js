@@ -13,36 +13,19 @@ import styled from "styled-components";
         height: 100vh;
     `;
     const StartButton = styled.button`
-        position: relative;
-        display: inline-block;
-        box-sizing: border-box;
-        margin: 0 8px;
-        border: none;
-        border-radius: 2px;
-        padding: 0 16px;
-        min-width: 64px;
-        height: 36px;
-        vertical-align: middle;
-        text-align: center;
-        text-overflow: ellipsis;
-        text-transform: uppercase;
-        color: #fff;
-        background-color: #1c5d76;
-        box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
-            0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-        font-family: "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui,
-            -apple-system;
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 36px;
-        overflow: hidden;
-        outline: none;
-        cursor: pointer;
-        transition: box-shadow 0.2s;
-
-        &:hover {
-          transform: translateY(-5px) scale(1.05);
-        }
+    border-radius: 100%;
+    width: 740px;
+    height: 740px;
+    font-size: 25px;
+    background: rgba(2, 90, 52, 0.747);
+    color: ${props => (props.primary ? "#2a2223" : "#FFF")};
+    border: 0;
+    margin: 5px 10px;
+    transition: 0.2s ease-in;
+    &:hover {
+        background: rgba(2, 90, 52, 0.384);
+        color: ${props => (props.primary ? "#2a2223" : "#fff")};
+    }
     `
     
 function Home(props) {
@@ -52,7 +35,7 @@ function Home(props) {
     
     return (
       <HomeWrapper>
-        <StartButton onClick={routeToShop} className="md-button shop-button">Read the Noble Quran</StartButton>
+        <StartButton onClick={routeToShop} className="md-button shop-button">Read The Noble Quran</StartButton>
       </HomeWrapper>
     );
   }

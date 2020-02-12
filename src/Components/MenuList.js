@@ -22,41 +22,30 @@ background-color: #00CED1;
 background-position: center;
 display:flex;
 flex-direction: column;
+align-items: center;
 padding: 10px;
 `;
 
 const BackToHome = styled.div`
-        position: relative;
-        display: inline-block;
-        box-sizing: border-box;
-        margin: 0 8px;
-        border: none;
-        border-radius: 2px;
-        padding: 0 16px;
-        min-width: 64px;
-        height: 36px;
-        vertical-align: middle;
-        text-align: center;
-        text-overflow: ellipsis;
-        text-transform: uppercase;
-        color: #fff;
-        background-color: #1c5d76;
-        box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
-            0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-        font-family: "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui,
-            -apple-system;
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 36px;
-        overflow: hidden;
-        outline: none;
-        cursor: pointer;
-        transition: box-shadow 0.2s;
-
+        display: flex;
+        justify-content: center;
+        width: 200px;
+        height: 40px;
+        font-size: 25;
+        background: ${props => (props.primary ? "#FFF" : "#2a2223")};
+        color: ${props => (props.primary ? "#2a2223" : "#FFF")};
+        border: 0;
+        margin: 5px 10px;
+        transition: 0.2s ease-in;
+        border: ${props =>
+            props.primary ? "2px solid #99f3eb" : "2px solid #2a2223"};
         &:hover {
-            transform: translateY(-5px) scale(1.05);
-          }
-    `
+            background: ${props => (props.primary ? "#2a2223" : "#fff")};
+            color: ${props => (props.primary ? "#fff" : "#2a2223")};
+            border: ${props =>
+            props.primary ? "2px solid #2a2223" : "2px solid #99f3eb"};
+        }
+    `;
 
 const MenuList = (props) => {
 

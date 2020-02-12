@@ -24,7 +24,7 @@ height: 100px,
       
     promiseInProgress &&
     <Container>
-      <Loader type="ThreeDots" color="#2BAD60" height={100} width={100} timeout={4000}/>
+      <Loader type="ThreeDots" color="#00CED1" height={150} width={200} timeout={4000}/>
     </Container>
   );  
  }
