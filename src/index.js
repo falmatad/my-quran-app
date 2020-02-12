@@ -13,6 +13,8 @@ display: flex;
 flex-flow: column nowrap;
 justify-content: center;
 align-items: center;
+width: 100%,
+height: 100px,
 
 `;
  const LoadingIndicator = props => {
@@ -21,16 +23,8 @@ align-items: center;
   return (
       
     promiseInProgress &&
-    <Container
-      style={{
-        width: "100%",
-        height: "100",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center"
-      }}
-    >
-      <Loader type="ThreeDots" color="#2BAD60" height="100" width="100" timeout={4000}/>
+    <Container>
+      <Loader type="ThreeDots" color="#2BAD60" height={100} width={100} timeout={4000}/>
     </Container>
   );  
  }
