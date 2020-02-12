@@ -4,26 +4,6 @@ import Sound from "react-sound";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleNotch, faStopCircle} from '@fortawesome/free-solid-svg-icons'
 
-const Pulse = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: transform 0.2s ease-in;
-  width: 100px;
-  height: 50px;
-  cursor: pointer;
-  box-shadow: 0px 1px 6px -2px grey;
-  margin-top: 5px;
-  margin: 5px;
-  padding: 10px;
-  text-decoration: none;
-  background-color: #00CED1;
-
-  &:hover {
-    transform: translateY(-5px) scale(1.05);
-    background: turquoise;
-  }
-`;
 const ArabicText = styled.p`
     width: 100%;
     text-align: end;
@@ -32,7 +12,7 @@ const ArabicText = styled.p`
     color: #00CED1;
     transition: transform 0.2s ease-in;
     cursor: pointer;
-    box-shadow: 0px 1px 6px -2px grey;
+    // box-shadow: 0px 1px 6px -2px grey;
     margin-top: 10px;
     padding: 10px
     text-decoration: none;
@@ -46,18 +26,14 @@ const EnglishText = styled.p`
     color: #1c5d76;
     transition: transform 0.2s ease-in;
     cursor: pointer;
-    box-shadow: 0px 1px 6px -2px grey;
+    // box-shadow: 0px 1px 6px -2px grey;
     margin-top: 10px;
     padding: 10px
     text-decoration: none;
+    border-bottom: 1px solid lightgray;
 
 `;
 
-const AyatNumber = styled.div`
-    font-family: 'Scheherazade', serif;
-    font-size: 35px;
-    color: #00CED1;
-`;
 const ControlButtons = styled.div`
     width: 100px;
     display: flex;
@@ -92,7 +68,7 @@ const Ayat = (props) => {
         <>
             {renderCurrentSong()}
             <ArabicText onClick = {() => setSound(Sound.status.PLAYING)}> {`${props.ayat.text_madani} {${props.ayat.verse_number}}`}</ArabicText>
-            <EnglishText>{`${props.ayat.translations[0].text} {${props.ayat.verse_number}}`}</EnglishText>
+            <EnglishText>{`${props.ayat.translations[0].text}`}</EnglishText>
             <Sound
                 url={`${props.ayat.audio.url}`}
                 playStatus={sound}
