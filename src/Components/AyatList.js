@@ -116,7 +116,7 @@ const AyatList = props => {
 
     useEffect(() => {
         trackPromise(
-		axios.get(`http://staging.quran.com:3000/api/v3/chapters/${surahID}/verses?page=${page}&translations=22`)
+		axios.get(`http://staging.quran.com:3000/api/v3/chapters/${surahID}/verses?page=${page}&translations=22&recitation=2`)
             .then(response => {
                 setAyats(response.data.verses);
 			})

@@ -12,8 +12,8 @@ const Pulse = styled.div`
   justify-content: space-between;
   align-items: center;
   transition: transform 0.2s ease-in;
-  width: 80vh;
-  height: 100px;
+  width: 40vw;
+  height: 70px;
   cursor: pointer;
   box-shadow: 0px 1px 6px -2px grey;
   margin-top: 5px;
