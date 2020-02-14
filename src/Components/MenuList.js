@@ -29,6 +29,7 @@ padding: 10px;
 const BackToHome = styled.div`
         display: flex;
         justify-content: center;
+        align-items: center;
         width: 200px;
         height: 40px;
         font-size: 25;
@@ -44,6 +45,7 @@ const BackToHome = styled.div`
             color: ${props => (props.primary ? "#fff" : "#2a2223")};
             border: ${props =>
             props.primary ? "2px solid #2a2223" : "2px solid #99f3eb"};
+            cursor: pointer;
         }
     `;
 
@@ -52,7 +54,7 @@ const MenuList = (props) => {
 	return (
         <MenuPage>
             <h1 className="Header">Select a Surah to Read</h1>
-            <NavLink to={`/`}><BackToHome className="md-button shop-button">Back To Home</BackToHome></NavLink>
+            <NavLink to={`/`} style={{ textDecoration: 'none' }}><BackToHome className="md-button shop-button">Back To Home</BackToHome></NavLink>
             <Container>
                 {props.surah.map(currentSurah => (
                         <MenuCard  key={currentSurah.chapter_number} currentSurah={currentSurah}/>

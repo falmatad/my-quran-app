@@ -25,6 +25,7 @@ import styled from "styled-components";
     &:hover {
         background: rgba(2, 90, 52, 0.384);
         color: ${props => (props.primary ? "#2a2223" : "#fff")};
+        cursor: pointer;
     }
     `
     

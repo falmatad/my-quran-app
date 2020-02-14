@@ -25,7 +25,6 @@ const EnglishText = styled.p`
     font-size: 25px;
     color: #1c5d76;
     transition: transform 0.2s ease-in;
-    cursor: pointer;
     // box-shadow: 0px 1px 6px -2px grey;
     margin-top: 10px;
     padding: 10px
@@ -47,14 +46,13 @@ const Ayat = (props) => {
         window.scrollTo(0, 0)
 
       }, [])
-
     const renderCurrentSong = () =>{
         switch (sound) {
             case Sound.status.PLAYING:
             return (
                 <ControlButtons>
                     <FontAwesomeIcon icon={faCircleNotch}  color="#00CED1" spin size="lg"/>
-                    <FontAwesomeIcon icon={faStopCircle} onClick = {() => setSound(Sound.status.STOPPED)} color="#00CED1" size="lg"/>
+                    <FontAwesomeIcon style={{ cursor: 'pointer' }} icon={faStopCircle} onClick = {() => setSound(Sound.status.STOPPED)} color="#00CED1" size="lg"/>
                 </ControlButtons>
             );
             default:
