@@ -50,15 +50,15 @@ const BackToHome = styled.div`
     `;
 
 const MenuList = (props) => {
-
+    
 	return (
         <MenuPage>
             <h1 className="Header">Select a Surah to Read</h1>
             <NavLink to={`/`} style={{ textDecoration: 'none' }}><BackToHome className="md-button shop-button">Back To Home</BackToHome></NavLink>
             <Container>
-                {props.surah.map(currentSurah => (
-                        <MenuCard  key={currentSurah.chapter_number} currentSurah={currentSurah}/>
-                ))}
+                {props.surah.map(currentSurah => {
+                        return <MenuCard  key={currentSurah.id} currentSurah={currentSurah}/>
+                    })}
             </Container>
         </MenuPage>
 	)

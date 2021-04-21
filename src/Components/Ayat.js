@@ -4,9 +4,28 @@ import Sound from "react-sound";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleNotch, faStopCircle} from '@fortawesome/free-solid-svg-icons'
 
-const ArabicText = styled.p`
-    width: 100%;
-    text-align: end;
+
+
+
+
+const Ayah = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+`;
+
+const ArabicAyah = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+`;
+const EnglishAyah = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+`;
+
+const ArabicWord = styled.div`
     font-family: 'Scheherazade', serif;
     font-size: 40px;
     color: #00CED1;
@@ -18,9 +37,7 @@ const ArabicText = styled.p`
     text-decoration: none;
 
 `;
-const EnglishText = styled.p`
-    width: 100%;
-    text-align: end;
+const EnglishWord = styled.div`
     font-family: 'Scheherazade', serif;
     font-size: 25px;
     color: #1c5d76;
@@ -41,7 +58,10 @@ const ControlButtons = styled.div`
 
 const Ayat = (props) => {
     const [sound, setSound] = useState(Sound.status.STOPPED)
+    const reversedWords = props.ayat.words.reverse()
 
+    console.log(reversedWords)
+    console.log(props.ayat.words)
     useEffect(() => {
         window.scrollTo(0, 0)
 
@@ -63,16 +83,29 @@ const Ayat = (props) => {
     }
 
     return (
+        
         <>
             {renderCurrentSong()}
-            <ArabicText onClick = {() => setSound(Sound.status.PLAYING)}> {`${props.ayat.text_madani} {${props.ayat.verse_number}}`}</ArabicText>
-            <EnglishText>{`${props.ayat.translations[0].text}`}</EnglishText>
-            <Sound
+            <Ayah >
+                <ArabicAyah>
+                    {props.ayat.words.map((word) => {
+                        return <ArabicWord key={`${word.position}-${word.line_number}`} > {word.text_uthmani}</ArabicWord>
+                    })}
+                </ArabicAyah>
+                <EnglishAyah>
+                    {props.ayat.words.map((word) => {
+                        return <EnglishWord key={`${word.position}-${word.line_number}`}>{word.translation.text}</EnglishWord>
+                    })}
+                </EnglishAyah>
+            </Ayah>
+            
+            {/* <EnglishText>{`${props.ayat.translations[0].text}`}</EnglishText> */}
+            {/* <Sound
                 url={`${props.ayat.audio.url}`}
                 playStatus={sound}
-                playFromPosition={300 /* in milliseconds */}
+                playFromPosition={300}
                 onFinishedPlaying={() => setSound(Sound.status.STOPPED)}
-            />
+            /> */}
         </>
     )
 }

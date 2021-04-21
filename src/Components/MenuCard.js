@@ -46,10 +46,10 @@ const Name = styled.h4`
 const MenuCard = props => {
 
 	return (
-      <NavLink to={`/surah-list/${props.currentSurah.chapter_number}`} style={{ textDecoration: 'none' }}>
+      <NavLink to={`/surah-list/${props.currentSurah.id}`} style={{ textDecoration: 'none' }}>
         <Container>
           <NumberContainer>
-            <Number>{props.currentSurah.chapter_number}</Number>
+            <Number>{props.currentSurah.id}</Number>
           </NumberContainer>
           <Pulse className="card-wrapper">
             <Name>{props.currentSurah.name_arabic}</Name>

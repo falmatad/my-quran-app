@@ -13,7 +13,7 @@ const App = () => {
   
     useEffect(() => {
       trackPromise(
-      axios.get(`http://staging.quran.com:3000/api/v3/chapters`)
+      axios.get(`https://api.quran.com/api/v4/chapters`)
               .then(response => {
                   setSurah(response.data.chapters);
         })

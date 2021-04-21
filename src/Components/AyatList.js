@@ -110,6 +110,7 @@ const NextButton = styled.button`
 
 const AyatList = props => {
     const {surahID} = useParams();
+    console.log(useParams())
     const currentSurah = props.surah.find(
         element => surahID === `${element.chapter_number}`
     )
@@ -121,7 +122,7 @@ const AyatList = props => {
 
     useEffect(() => {
         trackPromise(
-		axios.get(`http://staging.quran.com:3000/api/v3/chapters/${surahID}/verses?page=${page}&translations=22&recitation=2`)
+		axios.get(`https://api.quran.com/api/v4/verses/by_chapter/${surahID}?language=ar&words=true&page=${page}&per_page=10&word_fields=text_uthmani`)
             .then(response => {
                 setAyats(response.data.verses);
 			})
