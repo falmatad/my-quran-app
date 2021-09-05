@@ -1,4 +1,4 @@
-Hosted at my-quran-app.vercel.app/
+Hosted at https://my-quran-app.vercel.app/
 
 ## Available Scripts
 
