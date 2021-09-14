@@ -25,14 +25,14 @@ const App = () => {
 
   return (
     <div className="App">
-      <Route exact path="/" component={Home} />
-      <Route exact path="/surah-list">
+      {/* <Route exact path="/" component={Home} /> */}
+      <Route exact path="/">
             <MenuList 
               surah={surah} 
             />
       </Route>
 
-      <Route path="/surah-list/:surahID">
+      <Route path="/:surahID">
               <AyatList 
                 surah={surah}
               />

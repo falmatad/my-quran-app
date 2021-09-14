@@ -46,7 +46,7 @@ const Name = styled.h4`
 const MenuCard = props => {
 
 	return (
-      <NavLink to={`/surah-list/${props.currentSurah.id}`} style={{ textDecoration: 'none' }}>
+      <NavLink to={`/${props.currentSurah.id}`} style={{ textDecoration: 'none' }}>
         <Container>
           <NumberContainer>
             <Number>{props.currentSurah.id}</Number>

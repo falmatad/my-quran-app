@@ -27,17 +27,18 @@ const Pulse = styled.div`
     height: 200px;
 
 `;
-const AyatContainer = styled.div`
+const AyatContainer = styled.span`
 transition: transform 0.2s ease-in;
 background: white;
 width: 70vw;
-// box-shadow: 0px 1px 6px -2px grey;
-margin-top: 70px;
-padding: 20px;
-display: flex;
-flex-direction: column;
-justify-content: flex-end;
-align-items: center;
+text-align: justify;
+// // box-shadow: 0px 1px 6px -2px grey;
+// margin-top: 70px;
+// // padding-top: 20px;
+// display: flex;
+// flex-direction: column;
+// justify-content: flex-end;
+// align-items: center;
 `;
 const Title = styled.h2`
   font-size: 35px;
@@ -122,9 +123,10 @@ const AyatList = props => {
 
     useEffect(() => {
         trackPromise(
-		axios.get(`https://api.quran.com/api/v4/verses/by_chapter/${surahID}?language=ar&words=true&page=${page}&per_page=10&word_fields=text_uthmani`)
+		axios.get(`https://api.alquran.cloud/v1/surah/${surahID}`)
             .then(response => {
-                setAyats(response.data.verses);
+                console.log(response)
+                setAyats(response.data.data.ayahs);
 			})
 			.catch(error => {
 				console.log(error);
@@ -153,6 +155,7 @@ const AyatList = props => {
             );
         }
     }
+    console.log(surahID, typeof surahID)
     return (
     <>
     <Sound
@@ -169,14 +172,15 @@ const AyatList = props => {
 		</Pulse > */}
         <ButtonsNav>
             <NextButton style={{ cursor: 'pointer' }} onClick={() => setPage(page - 1)}>Previos Page</NextButton>
-            <NavLink to={`/surah-list`} style={{ textDecoration: 'none' }}><BackToMenu className="md-button shop-button">Back to Selection</BackToMenu></NavLink>
+            <NavLink to={`/`} style={{ textDecoration: 'none' }}><BackToMenu className="md-button shop-button">Back to Selection</BackToMenu></NavLink>
             <NextButton style={{ cursor: 'pointer' }} onClick={() => setPage(page + 1)}>Next Page</NextButton>
         </ButtonsNav>
         {renderCurrentSong()}
-        <AyatContainer className="card-wrapper">
+        { surahID === "9" || surahID === "1" ? null: <h2 style={{fontSize: 50, fontFamily: 'Scheherazade', color: '#00CED1',}}>﷽</h2>}
+        <AyatContainer className="card-wrapper" dir={'rtl'}>
             { ayats.map( ayat => (
                 <Ayat
-                    key={ayat.verse_number}
+                    key={ayat.number}
                     ayat={ayat}
                     ayats={ayats}
                     surahID={surahID}
@@ -185,7 +189,7 @@ const AyatList = props => {
         </AyatContainer>
         <ButtonsNav>
             <NextButton style={{ cursor: 'pointer' }} onClick={() => setPage(page - 1)}>Previos Page</NextButton>
-            <NavLink to={`/surah-list`}><BackToMenu className="md-button shop-button">Back to Selection</BackToMenu></NavLink>
+            <NavLink to={`/`}><BackToMenu className="md-button shop-button">Back to Selection</BackToMenu></NavLink>
             <NextButton style={{ cursor: 'pointer' }} onClick={() =>   setPage(page + 1)}>Next Page</NextButton>
         </ButtonsNav>
     </AyatPage>

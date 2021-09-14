@@ -8,25 +8,26 @@ import { faCircleNotch, faStopCircle} from '@fortawesome/free-solid-svg-icons'
 
 
 
-const Ayah = styled.div`
+const Ayah = styled.span`
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
 `;
 
-const ArabicAyah = styled.div`
+const ArabicAyah = styled.span`
     display: flex;
-    justify-content: flex-end;
-    flex-direction: row-reverse;
+    // justify-content: flex-end;
+    // flex-direction: row-reverse;
 `;
 const EnglishAyah = styled.div`
     display: flex;
     justify-content: flex-end;
     flex-direction: row-reverse;
+    
 `;
 
-const ArabicWord = styled.div`
-    font-family: 'Scheherazade', serif;
+const ArabicWord = styled.span`
+    font-family: serif;
     font-size: 40px;
     color: #00CED1;
     transition: transform 0.2s ease-in;
@@ -35,6 +36,7 @@ const ArabicWord = styled.div`
     margin-top: 10px;
     padding: 10px
     text-decoration: none;
+    text-align: justify;
 
 `;
 const EnglishWord = styled.div`
@@ -58,10 +60,7 @@ const ControlButtons = styled.div`
 
 const Ayat = (props) => {
     const [sound, setSound] = useState(Sound.status.STOPPED)
-    const reversedWords = props.ayat.words.reverse()
-
-    console.log(reversedWords)
-    console.log(props.ayat.words)
+    
     useEffect(() => {
         window.scrollTo(0, 0)
 
@@ -82,22 +81,23 @@ const Ayat = (props) => {
         }
     }
 
+    
     return (
         
         <>
             {renderCurrentSong()}
-            <Ayah >
-                <ArabicAyah>
+            <span >
+                <span>
+                    <ArabicWord > {props.ayat.numberInSurah === 1 && props.surahID !== '1' ? props.ayat.text.replace('بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ',''): props.ayat.text}</ArabicWord>
+                    <ArabicWord > {props.ayat.numberInSurah}</ArabicWord>
+                </span>
+                {/* <EnglishAyah>
                     {props.ayat.words.map((word) => {
-                        return <ArabicWord key={`${word.position}-${word.line_number}`} > {word.text_uthmani}</ArabicWord>
+                        console.log(word)
+                        return <EnglishWord key={word.id}>{word.translation.text}</EnglishWord>
                     })}
-                </ArabicAyah>
-                <EnglishAyah>
-                    {props.ayat.words.map((word) => {
-                        return <EnglishWord key={`${word.position}-${word.line_number}`}>{word.translation.text}</EnglishWord>
-                    })}
-                </EnglishAyah>
-            </Ayah>
+                </EnglishAyah> */}
+            </span>
             
             {/* <EnglishText>{`${props.ayat.translations[0].text}`}</EnglishText> */}
             {/* <Sound
