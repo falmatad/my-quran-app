@@ -5,8 +5,11 @@ import Sound from "react-sound";
 import {useParams, NavLink} from "react-router-dom";
 import Ayat from "./Ayat";
 import { trackPromise } from 'react-promise-tracker';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleNotch, faStopCircle, faPlay} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleNotch, faStopCircle, faPlay} from '@fortawesome/free-solid-svg-icons';
+import { usePromiseTracker } from "react-promise-tracker";
+import Loader from 'react-loader-spinner';
+
 
 const AyatPage = styled.div`
 display: flex;
@@ -109,6 +112,17 @@ const NextButton = styled.button`
         }
     `;
 
+const LoadingContainer = styled.div`
+display: flex;
+flex-flow: column nowrap;
+justify-content: center;
+align-items: center;
+width: 100%,
+height: 100px,
+
+`;
+
+
 const AyatList = props => {
     const {surahID} = useParams();
     console.log(useParams())
@@ -118,7 +132,18 @@ const AyatList = props => {
     //         element => surahID === `${element.chapter_number}`
     //     ))
     // }, [props.surah])
+
+    const LoadingIndicator = props => {
+        const { promiseInProgress } = usePromiseTracker();
     
+      return (
+          
+        promiseInProgress &&
+        <LoadingContainer>
+          <Loader type="ThreeDots" color="#00CED1" height={150} width={200} timeout={4000}/>
+        </LoadingContainer>
+      );  
+     }
 
     console.log(props.surah, currentSurah)
     const [ayats, setAyats] = useState([])
@@ -191,12 +216,14 @@ const AyatList = props => {
                 />
             ))}
         </AyatContainer>
+        <LoadingIndicator />
         <ButtonsNav>
             {/* <NextButton style={{ cursor: 'pointer' }} onClick={() => setPage(page - 1)}>Previos Page</NextButton> */}
             <NavLink to={`/`}><BackToMenu className="md-button shop-button">Back to Selection</BackToMenu></NavLink>
             {/* <NextButton style={{ cursor: 'pointer' }} onClick={() =>   setPage(page + 1)}>Next Page</NextButton> */}
         </ButtonsNav>
     </AyatPage>
+
     </>
     );
 }
