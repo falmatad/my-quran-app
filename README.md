@@ -1,4 +1,4 @@
-A Web to read the Noble Quran in Arabic
+A Web App to read the Noble Quran in Arabic
 
 Hosted at https://my-quran-app.vercel.app/
 
