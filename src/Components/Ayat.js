@@ -28,8 +28,8 @@ const EnglishAyah = styled.div`
 
 const ArabicWord = styled.span`
     font-family: serif;
-    font-size: 40px;
-    color: #00CED1;
+    font-size: 35px;
+    color: gray;
     transition: transform 0.2s ease-in;
     cursor: pointer;
     // box-shadow: 0px 1px 6px -2px grey;
@@ -39,6 +39,25 @@ const ArabicWord = styled.span`
     text-align: justify;
 
 `;
+const AyahNumber= styled.span`
+
+    padding: 0 .5em;
+    display: inline-block;
+    position: relative;
+
+  
+    &:after {
+    content: "\06DD";
+    display: block;
+    position: absolute;
+    font-size: 1.5em;
+    top: 50%;
+    left: 50%;
+    transform: translate( -50%, -50%);
+  }
+
+`;
+
 const EnglishWord = styled.div`
     font-family: 'Scheherazade', serif;
     font-size: 25px;
@@ -89,7 +108,7 @@ const Ayat = (props) => {
             <span >
                 <span>
                     <ArabicWord > {props.ayat.numberInSurah === 1 && props.surahID !== '1' ? props.ayat.text.replace('بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ',''): props.ayat.text}</ArabicWord>
-                    <ArabicWord > {props.ayat.numberInSurah}</ArabicWord>
+                    <AyahNumber > {props.ayat.numberInSurah}</AyahNumber>
                 </span>
                 {/* <EnglishAyah>
                     {props.ayat.words.map((word) => {

@@ -30,7 +30,7 @@ const Pulse = styled.div`
 const AyatContainer = styled.span`
 transition: transform 0.2s ease-in;
 background: white;
-width: 70vw;
+width: 57vw;
 text-align: justify;
 // // box-shadow: 0px 1px 6px -2px grey;
 // margin-top: 70px;
@@ -112,10 +112,15 @@ const NextButton = styled.button`
 const AyatList = props => {
     const {surahID} = useParams();
     console.log(useParams())
-    const currentSurah = props.surah.find(
-        element => surahID === `${element.chapter_number}`
-    )
+    const currentSurah = []
+    // useEffect(()=> {
+    //     currentSurah.push(props.surah.find(
+    //         element => surahID === `${element.chapter_number}`
+    //     ))
+    // }, [props.surah])
+    
 
+    console.log(props.surah, currentSurah)
     const [ayats, setAyats] = useState([])
     const [page, setPage] = useState(1)
     const [soundFull, setSoundFull] = useState(Sound.status.STOPPED)
@@ -149,13 +154,12 @@ const AyatList = props => {
             default:
             return (
                 <ControlButtons>
-                    <h2>Full Surah</h2>
+                    <h2>Play Recitation</h2>
                     <FontAwesomeIcon icon={faPlay}  style={{ cursor: 'pointer' }} color="#00CED1" size="lg" onClick = {() => setSoundFull(Sound.status.PLAYING)}/>
                 </ControlButtons>
             );
         }
     }
-    console.log(surahID, typeof surahID)
     return (
     <>
     <Sound
@@ -171,9 +175,9 @@ const AyatList = props => {
             <Title>{currentSurah.translated_name.name}</Title>
 		</Pulse > */}
         <ButtonsNav>
-            <NextButton style={{ cursor: 'pointer' }} onClick={() => setPage(page - 1)}>Previos Page</NextButton>
+            {/* <NextButton style={{ cursor: 'pointer' }} onClick={() => setPage(page - 1)}>Previos Page</NextButton> */}
             <NavLink to={`/`} style={{ textDecoration: 'none' }}><BackToMenu className="md-button shop-button">Back to Selection</BackToMenu></NavLink>
-            <NextButton style={{ cursor: 'pointer' }} onClick={() => setPage(page + 1)}>Next Page</NextButton>
+            {/* <NextButton style={{ cursor: 'pointer' }} onClick={() => setPage(page + 1)}>Next Page</NextButton> */}
         </ButtonsNav>
         {renderCurrentSong()}
         { surahID === "9" || surahID === "1" ? null: <h2 style={{fontSize: 50, fontFamily: 'Scheherazade', color: '#00CED1',}}>﷽</h2>}
@@ -188,9 +192,9 @@ const AyatList = props => {
             ))}
         </AyatContainer>
         <ButtonsNav>
-            <NextButton style={{ cursor: 'pointer' }} onClick={() => setPage(page - 1)}>Previos Page</NextButton>
+            {/* <NextButton style={{ cursor: 'pointer' }} onClick={() => setPage(page - 1)}>Previos Page</NextButton> */}
             <NavLink to={`/`}><BackToMenu className="md-button shop-button">Back to Selection</BackToMenu></NavLink>
-            <NextButton style={{ cursor: 'pointer' }} onClick={() =>   setPage(page + 1)}>Next Page</NextButton>
+            {/* <NextButton style={{ cursor: 'pointer' }} onClick={() =>   setPage(page + 1)}>Next Page</NextButton> */}
         </ButtonsNav>
     </AyatPage>
     </>

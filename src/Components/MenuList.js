@@ -53,8 +53,8 @@ const MenuList = (props) => {
     
 	return (
         <MenuPage>
-            <h1 className="Header">Select a Surah to Read</h1>
-            <NavLink to={`/`} style={{ textDecoration: 'none' }}><BackToHome className="md-button shop-button">Back To Home</BackToHome></NavLink>
+            <h1 className="Header">The Noble Quran - Select a Chapter to Read</h1>
+            {/* <NavLink to={`/`} style={{ textDecoration: 'none' }}><BackToHome className="md-button shop-button">Back To Home</BackToHome></NavLink> */}
             <Container>
                 {props.surah.map(currentSurah => {
                         return <MenuCard  key={currentSurah.id} currentSurah={currentSurah}/>
